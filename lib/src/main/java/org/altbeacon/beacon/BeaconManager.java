@@ -1396,7 +1396,7 @@ public class BeaconManager {
             throw new NullPointerException("Notification cannot be null");
         }
         setEnableScheduledScanJobs(false);
-        setForegroundServiceNotification(notification, notificationId)
+        setForegroundServiceNotification(notification, notificationId);
     }
 
     /**
