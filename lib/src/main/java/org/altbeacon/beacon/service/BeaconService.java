@@ -198,6 +198,7 @@ public class BeaconService extends Service {
     @MainThread
     @Override
     public void onCreate() {
+        LogManager.i(TAG, "onCreate");
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             bluetoothCrashResolver = new BluetoothCrashResolver(this);
             bluetoothCrashResolver.start();
