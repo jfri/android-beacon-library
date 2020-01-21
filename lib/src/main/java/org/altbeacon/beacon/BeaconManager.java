@@ -428,10 +428,10 @@ public class BeaconManager {
                             LogManager.i(TAG, "Not starting foreground beacon scanning" +
                                     " service.  A consumer is already bound, so it should be started");
                         }
-                        else {
-                            LogManager.i(TAG, "Starting foreground beacon scanning service.");
-                            mContext.startForegroundService(intent);
-                        }
+//                         else {
+//                             LogManager.i(TAG, "Starting foreground beacon scanning service.");
+//                             mContext.startForegroundService(intent);
+//                         }
                     }
                     else {
                     }
