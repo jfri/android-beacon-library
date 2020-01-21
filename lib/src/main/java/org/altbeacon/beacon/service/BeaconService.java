@@ -120,6 +120,8 @@ public class BeaconService extends Service {
     public static final int MSG_STOP_MONITORING = 5;
     public static final int MSG_SET_SCAN_PERIODS = 6;
     public static final int MSG_SYNC_SETTINGS = 7;
+    public static final String EXTRA_NOTIFICATION = "notification";
+    public static final String EXTRA_NOTIFICATION_ID = "notification_id";
 
     static class IncomingHandler extends Handler {
         private final WeakReference<BeaconService> mService;
@@ -263,12 +265,8 @@ public class BeaconService extends Service {
      */
     private void startForegroundIfConfigured() {
         LogManager.i(TAG, "start foreground if configured");
-        BeaconManager beaconManager = BeaconManager.getInstanceForApplication(
-                this.getApplicationContext());
-        Notification notification = beaconManager
-                .getForegroundServiceNotification();
-        int notificationId = beaconManager
-                .getForegroundServiceNotificationId();
+        Notification notification = intent.getParcelableExtra(EXTRA_NOTIFICATION);
+        int notificationId = intent.getIntExtra(EXTRA_NOTIFICATION_ID, -1);
         if (notification != null &&
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             LogManager.i(TAG, "start foreground");
