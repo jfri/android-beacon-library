@@ -222,6 +222,8 @@ public class RegionBootstrap {
             
             if (beaconManager.getForegroundServiceNotification() != null) {
                 intent.putExtra(BeaconService.EXTRA_NOTIFICATION, beaconManager.getForegroundServiceNotification());
+                intent.putExtra(BeaconService.EXTRA_NOTIFICATION_ID, beaconManager.getForegroundServiceNotificationId());
+                
                 context.startForegroundService(intent);
             } else {
                 context.startService(intent);
