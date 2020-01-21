@@ -216,7 +216,16 @@ public class RegionBootstrap {
         @Override
         public boolean bindService(Intent intent, ServiceConnection conn, int arg2) {
             this.serviceIntent = intent;
-            context.startForegroundService(intent);
+            
+            BeaconManager beaconManager = BeaconManager.getInstanceForApplication(getApplicationContext());
+            Notification notification = beaconManager.getForegroundServiceNotification();
+            
+            if (notification != null) {
+                context.startForegroundService(intent);
+            } else {
+                context.startService(intent);
+            }
+            
             return context.bindService(intent, conn, arg2);
 
         }
