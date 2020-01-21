@@ -263,7 +263,7 @@ public class BeaconService extends Service {
      * This starts the scanning service as a foreground service if it is so configured in the
      * manifest
      */
-    private void startForegroundIfConfigured() {
+    private void startForegroundIfConfigured(Intent intent) {
         LogManager.i(TAG, "start foreground if configured");
         Notification notification = intent.getParcelableExtra(EXTRA_NOTIFICATION);
         int notificationId = intent.getIntExtra(EXTRA_NOTIFICATION_ID, -1);
@@ -296,7 +296,7 @@ public class BeaconService extends Service {
                         "starting with intent " + intent.toString()
         );
         super.onStartCommand(intent, flags, startId);
-        startForegroundIfConfigured();
+        startForegroundIfConfigured(intent);
         return START_STICKY;
     }
 
