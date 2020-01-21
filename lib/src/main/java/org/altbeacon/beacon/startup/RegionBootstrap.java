@@ -226,7 +226,7 @@ public class RegionBootstrap {
                 
                 context.startForegroundService(intent);
             } else {
-                context.startService(intent);
+                // context.startService(intent);
             }
             
             return context.bindService(intent, conn, arg2);
