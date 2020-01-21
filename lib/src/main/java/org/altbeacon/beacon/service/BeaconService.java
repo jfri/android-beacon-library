@@ -246,7 +246,6 @@ public class BeaconService extends Service {
         } catch (Exception e) {
             LogManager.e(e, TAG, "Cannot get simulated Scan data.  Make sure your org.altbeacon.beacon.SimulatedScanData class defines a field with the signature 'public static List<Beacon> beacons'");
         }
-        this.startForegroundIfConfigured();
     }
 
 
@@ -298,7 +297,9 @@ public class BeaconService extends Service {
                         :
                         "starting with intent " + intent.toString()
         );
-        return super.onStartCommand(intent, flags, startId);
+        super.onStartCommand(intent, flags, startId);
+        startForegroundIfConfigured();
+        return START_STICKY;
     }
 
     /**
