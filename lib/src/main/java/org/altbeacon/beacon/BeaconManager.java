@@ -1396,8 +1396,7 @@ public class BeaconManager {
             throw new NullPointerException("Notification cannot be null");
         }
         setEnableScheduledScanJobs(false);
-        mForegroundServiceNotification = notification;
-        mForegroundServiceNotificationId = notificationId;
+        setForegroundServiceNotification(notification, notificationId)
     }
 
     /**
@@ -1415,7 +1414,6 @@ public class BeaconManager {
         if (isAnyConsumerBound()) {
             throw new IllegalStateException("May not be called after consumers are already bound");
         }
-        mForegroundServiceNotification = null;
         setScheduledScanJobsEnabledDefault();
     }
 
@@ -1434,6 +1432,11 @@ public class BeaconManager {
      */
     public int getForegroundServiceNotificationId() {
         return mForegroundServiceNotificationId;
+    }
+    
+    public void setForegroundServiceNotification(Notification notification, int notificationId) {
+        mForegroundServiceNotification = notification;
+        mForegroundServiceNotificationId = notificationId;
     }
 
 
