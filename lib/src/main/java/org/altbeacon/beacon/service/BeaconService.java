@@ -288,6 +288,8 @@ public class BeaconService extends Service {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             LogManager.i(TAG, "start foreground");
             this.startForeground(notificationId, notification);
+        } else {
+            startForegroundIfConfigured();
         }
     }
 
