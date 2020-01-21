@@ -315,7 +315,7 @@ public class BeaconService extends Service {
                         "starting with intent " + intent.toString()
         );
         super.onStartCommand(intent, flags, startId);
-        startForegroundIfConfigured(intent);
+        //startForegroundIfConfigured(intent);
         return START_STICKY;
     }
 
