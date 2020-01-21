@@ -246,6 +246,7 @@ public class RegionBootstrap {
          */
         @Override
         public void unbindService(ServiceConnection conn) {
+            LogManager.i(TAG, "unbindService");
             context.unbindService(conn);
             context.stopService(serviceIntent);
             serviceConnected = false;
