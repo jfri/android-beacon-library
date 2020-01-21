@@ -216,7 +216,7 @@ public class RegionBootstrap {
         @Override
         public boolean bindService(Intent intent, ServiceConnection conn, int arg2) {
             this.serviceIntent = intent;
-            context.startService(intent);
+            context.startForegroundService(intent);
             return context.bindService(intent, conn, arg2);
 
         }
