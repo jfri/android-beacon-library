@@ -249,6 +249,7 @@ public class BeaconService extends Service {
         } catch (Exception e) {
             LogManager.e(e, TAG, "Cannot get simulated Scan data.  Make sure your org.altbeacon.beacon.SimulatedScanData class defines a field with the signature 'public static List<Beacon> beacons'");
         }
+        startForegroundIfConfigured();
     }
 
 
@@ -264,6 +265,21 @@ public class BeaconService extends Service {
      * This starts the scanning service as a foreground service if it is so configured in the
      * manifest
      */
+    private void startForegroundIfConfigured() {
+        LogManager.i(TAG, "start foreground if configured.");
+        BeaconManager beaconManager = BeaconManager.getInstanceForApplication(
+                this.getApplicationContext());
+        Notification notification = beaconManager	
+                .getForegroundServiceNotification();	
+        int notificationId = beaconManager	
+                .getForegroundServiceNotificationId();
+        if (notification != null &&
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            LogManager.i(TAG, "start foreground.");
+            this.startForeground(notificationId, notification);
+        }
+    }
+    
     private void startForegroundIfConfigured(Intent intent) {
         LogManager.i(TAG, "start foreground if configured");
         Notification notification = intent.getParcelableExtra(EXTRA_NOTIFICATION);
