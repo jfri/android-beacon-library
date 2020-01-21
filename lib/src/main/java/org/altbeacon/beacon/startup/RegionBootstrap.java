@@ -10,6 +10,7 @@ import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.MonitorNotifier;
 import org.altbeacon.beacon.Region;
 import org.altbeacon.beacon.logging.LogManager;
+import org.altbeacon.beacon.service.BeaconService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -220,6 +221,7 @@ public class RegionBootstrap {
             BeaconManager beaconManager = BeaconManager.getInstanceForApplication(getApplicationContext());
             
             if (beaconManager.getForegroundServiceNotification() != null) {
+                intent.putExtra(BeaconService.EXTRA_NOTIFICATION, beaconManager.getForegroundServiceNotification());
                 context.startForegroundService(intent);
             } else {
                 context.startService(intent);
