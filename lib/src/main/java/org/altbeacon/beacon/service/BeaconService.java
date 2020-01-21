@@ -263,6 +263,7 @@ public class BeaconService extends Service {
      * manifest
      */
     private void startForegroundIfConfigured() {
+        LogManager.d(TAG, "startForegroundIfConfigured");
         BeaconManager beaconManager = BeaconManager.getInstanceForApplication(
                 this.getApplicationContext());
         Notification notification = beaconManager
@@ -271,6 +272,7 @@ public class BeaconService extends Service {
                 .getForegroundServiceNotificationId();
         if (notification != null &&
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            LogManager.d(TAG, "startForeground");
             this.startForeground(notificationId, notification);
         }
     }
