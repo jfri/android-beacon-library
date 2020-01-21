@@ -331,8 +331,8 @@ public class BeaconService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         LogManager.i(TAG, "unbinding so destroying self");
-        this.stopForeground(true);
-        this.stopSelf();
+        //stopForeground(true);
+        stopSelf();
         return false;
     }
 
