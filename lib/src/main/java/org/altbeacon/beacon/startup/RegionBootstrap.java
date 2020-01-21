@@ -218,9 +218,8 @@ public class RegionBootstrap {
             this.serviceIntent = intent;
             
             BeaconManager beaconManager = BeaconManager.getInstanceForApplication(getApplicationContext());
-            Notification notification = beaconManager.getForegroundServiceNotification();
             
-            if (notification != null) {
+            if (beaconManager.getForegroundServiceNotification() != null) {
                 context.startForegroundService(intent);
             } else {
                 context.startService(intent);
